@@ -1,0 +1,22 @@
+<table class="table">
+  <thead>
+    <tr>
+      <th>Imagen</th>
+      <th>Título</th>
+      <th>Plataforma</th>
+      <th>Desarrollador</th>
+      <th>Género</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let game of games">
+      <td><img [src]="game.thumbnail" [alt]="game.title" width="80" /></td>
+      <td>{{ game.title }}</td>
+      <td>{{ game.platform }}</td>
+      <td>{{ game.developer }}</td>
+      <td>
+        <app-badge [text]="game.genre" [type]="getGenreBadge(game.genre)"></app-badge>
+      </td>
+    </tr>
+  </tbody>
+</table>

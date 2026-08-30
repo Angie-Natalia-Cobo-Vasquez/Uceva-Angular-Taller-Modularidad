@@ -19,7 +19,7 @@ import { ProductsService } from '../../services/products.service';
  * ```
  */
 @Component({
-  selector: 'app-list-products.component',
+  selector: 'app-list-products',
   template: `<app-table-products [products]="products" ></app-table-products>`,
   standalone: false,
 })

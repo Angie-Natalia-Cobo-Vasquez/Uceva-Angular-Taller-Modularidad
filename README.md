@@ -1,128 +1,124 @@
-# 🧪 Taller: Módulos en Angular
+# Uceva Angular: taller de modularidad
 
-- Este proyecto fue generado utilizando [Angular CLI](https://github.com/angular/angular-cli) 20.3.14.
+Aplicación académica desarrollada con Angular 20 para practicar la organización
+de una aplicación por módulos, componentes, servicios e interfaces tipadas. El
+proyecto usa componentes basados en `NgModule`; no utiliza componentes standalone.
 
-- El objetivo del taller es practicar la creación y organización de módulos y componentes en una aplicación Angular.
+## Requisitos
 
-## 📋 Requisitos Previos
+- Node.js 20 o superior y npm.
+- Git.
+- Angular CLI 20 (opcional, porque los scripts usan la CLI instalada localmente).
 
-Antes de iniciar, asegúrate de tener instaladas las siguientes herramientas:
+Comprueba las versiones con:
 
-- Node.js
-- npm
-- Angular CLI
-- Git
-- Visual Studio Code
-
-Puedes verificar Angular CLI en consola con: ```ng version```
-
-## ▶️ Iniciar el Proyecto en Modo Desarrollo
-
-Sigue estos pasos para ejecutar el proyecto localmente:
-
-### 1️⃣ Abrir la consola
-
-Ubícate en la raíz del proyecto (donde se encuentra el archivo package.json).
-
-### 2️⃣ Instalar dependencias
-
-```npm i```
-
-### 3️⃣ Ejecutar el proyecto
-
-```npm run start``` o ```ng serve```
-
-### 4️⃣ Abrir en el navegador
-
-Cuando el servidor esté en ejecución, abre un navegador y accede a: `http://localhost:4200/`
-
-
-## 🧪 Pruebas Unitarias
-
-El proyecto utiliza Jest para la ejecución de pruebas unitarias.
-
-### ▶️ Ejecutar pruebas una sola vez
-
-```npm run test```
-
-### 🔁 Ejecutar pruebas en modo watch
-
-Este modo vuelve a ejecutar las pruebas cada vez que se detecta un cambio en el código.
-
-```npm run test:watch```
-
-### 🔁 Ejecutar coverage de pruebas
-
-Este modo permite ejecutar todas las pruebas unitarias del proyecto y generar un reporte de cobertura, el cual muestra qué porcentaje del código fuente está siendo validado por las pruebas.
-
-```npm run test:coverage```
-
-### 📘 Generar documentación con Compodoc
-
-Este modo permite generar la documentación técnica del proyecto a partir de los comentarios JSDoc en el código fuente, facilitando la visualización de la API del Design System y sus componentes.
-
-El comando genera un sitio estático con la documentación del proyecto, incluyendo componentes, interfaces, tipos, módulos y diagramas de dependencias.
-
-```npm run compodoc```
-
-## ⚙️ Generación de Archivos con Angular CLI
-A continuación se presentan los comandos más utilizados para generar módulos y componentes.
-
-### 📦 Generar un módulo con archivo de rutas
-
-```ng g m [ruta]/[nombre-modulo] --routing```
-
-#### Ejemplo:
-
-```ng g m modules/users --routing```
-
-#### Archivos Generados
-
-```
-src/app/modules/users
-├──users.module.ts
-└──users-routing.module.ts
+```bash
+node --version
+npm --version
+npx ng version
 ```
 
-### 🧩 Generar un componente (con carpeta propia)
+## Instalación y ejecución
 
-```ng g c [ruta]/[nombre-componente] --standalone=false```
+Desde la carpeta que contiene `package.json`:
 
-#### Ejemplo:
-
-```ng g c modules/users/components/table-users --standalone=false```
-
-#### Archivos Generados
-
-```
-src/app/modules/users/components/table-users/
-├── table-users.html
-├── table-users.scss
-├── table-users.spec.ts
-└── table-users.ts
+```bash
+npm install
+npm start
 ```
 
-### 📄 Generar un componente sin carpeta (--flat)
+La aplicación queda disponible en `http://localhost:4200/`. La ruta inicial
+redirige a `/users`. También están disponibles `/products` y `/games`.
 
-```ng g c [ruta]/[nombre-componente] --standalone=false --flat```
+Para crear una compilación de producción:
 
-#### Ejemplo:
-
-```ng g c modules/users/components/table-users/table-users.component --standalone=false --flat```
-
-#### Archivos Generados
-
-```
-src/app/modules/users/components/table-users/
-├──table-users.component.html
-├──table-users.component.scss
-├──table-users.component.spec.ts
-└──table-users.component.ts
+```bash
+npm run build
 ```
 
-### 🎓 Observaciones Importantes
+## Arquitectura del proyecto
 
-- En este taller NO se utilizan componentes standalone
-- Todos los componentes deben pertenecer a un NgModule
-- Mantener una estructura clara favorece la escalabilidad y mantenibilidad
-- Usar Angular CLI evita errores de configuración manual
+```text
+src/app/
+├── core/                 Configuración e interfaces transversales
+├── modules/
+│   ├── users/             Usuarios, tabla, página y servicio
+│   ├── products/          Productos, tabla, página y servicio
+│   ├── games/             Juegos, tabla, página y servicio HTTP
+│   └── shared/            Componentes reutilizables
+├── app-routing-module.ts  Rutas lazy-loaded de los módulos
+└── app-module.ts          Módulo raíz
+```
+
+Los módulos de `users` y `products` obtienen datos de archivos de configuración
+en `core/config`. El módulo `games` consulta en tiempo real la API pública
+[FreeToGame](https://www.freetogame.com/api/games) mediante `HttpClient` y
+representa su respuesta con `Game`.
+
+## Pruebas
+
+El proyecto utiliza Jest y `jest-preset-angular`:
+
+```bash
+npm test                 # Ejecuta las pruebas una vez
+npm run test:watch       # Modo observación
+npm run test:coverage    # Reporte de cobertura
+```
+
+## Documentación con Compodoc
+
+Compodoc genera documentación HTML a partir del código TypeScript y sus
+comentarios JSDoc. La configuración está en `tsconfig.doc.json` y analiza
+`src/**/*.ts`, excluyendo las especificaciones.
+
+```bash
+npm run compodoc
+```
+
+El resultado se genera en la carpeta `documentation/`. Abre
+`documentation/index.html` en el navegador para consultar módulos, componentes,
+servicios, interfaces y gráficos de dependencias.
+
+## Modelos con Quicktype.io
+
+La interfaz `Game` corresponde a la respuesta de la API de FreeToGame. Para
+regenerar o comprobar el modelo usando [Quicktype.io](https://quicktype.io/):
+
+1. Solicita el JSON desde `https://www.freetogame.com/api/games`.
+2. Pégalo en Quicktype.
+3. Selecciona **TypeScript**, nombra el tipo raíz `Game` y activa la opción de
+	generar interfaces.
+4. Compara el resultado con
+	`src/app/modules/games/interfaces/game.interface.ts`.
+
+El modelo debe conservar los campos `id`, `title`, `thumbnail`,
+`short_description`, `game_url`, `genre`, `platform`, `publisher`, `developer`,
+`release_date` y `freetogame_profile_url`, porque son los consumidos por la
+tabla de juegos. Quicktype se utiliza como apoyo para inferir y validar el
+contrato; la interfaz fuente del proyecto se mantiene bajo control de Git.
+
+## Generación con Angular CLI
+
+Los módulos y componentes nuevos deben conservar el esquema no-standalone:
+
+```bash
+npx ng generate module modules/example --routing
+npx ng generate component modules/example/components/example --standalone=false
+```
+
+Mantén la separación `pages`, `components`, `services` e `interfaces` dentro de
+cada módulo para conservar la modularidad del taller.
+
+## Commits
+
+Usa [Conventional Commits](https://www.conventionalcommits.org/) con uno de los
+prefijos definidos para el taller:
+
+```text
+feat: agrega una funcionalidad
+fix: corrige un error
+refactor: reorganiza código sin cambiar el comportamiento
+docs: actualiza documentación
+test: agrega o modifica pruebas
+chore: realiza tareas de mantenimiento
+```

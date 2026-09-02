@@ -1,0 +1,15 @@
+[
+  {
+    "id": 1,
+    "title": "Example Game",
+    "thumbnail": "https://www.freetogame.com/g/1/thumbnail.jpg",
+    "short_description": "Example game description",
+    "game_url": "https://www.freetogame.com/open/example-game",
+    "genre": "Shooter",
+    "platform": "PC (Windows)",
+    "publisher": "Example Publisher",
+    "developer": "Example Developer",
+    "release_date": "2020-01-01",
+    "freetogame_profile_url": "https://www.freetogame.com/game/example-game"
+  }
+]

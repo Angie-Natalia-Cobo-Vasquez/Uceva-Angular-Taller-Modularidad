@@ -2,6 +2,13 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { ListGames } from './pages/list-games/list-games';
 
+/**
+ * Módulo de rutas del módulo de juegos.
+ *
+ * @remarks
+ * Define las rutas hijas disponibles bajo `/games`. La ruta por defecto
+ * de la sección redirige a la página {@link ListGames}.
+ */
 const routes: Routes = [
   { path: 'list-games', component: ListGames },
   { path: '**', redirectTo: 'list-games' },

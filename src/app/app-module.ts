@@ -6,6 +6,14 @@ import { AppRoutingModule } from './app-routing-module';
 import { AppComponent } from './app.component';
 import { SharedModule } from './modules/shared/shared-module';
 
+/**
+ * Módulo raíz de la aplicación.
+ *
+ * @remarks
+ * Es el punto de entrada de la aplicación Angular. Declara y arranca el
+ * {@link AppComponent}, importa el módulo compartido y el enrutador raíz, y
+ * habilita `HttpClient` a nivel global para el consumo de APIs.
+ */
 @NgModule({
   declarations: [
     AppComponent,

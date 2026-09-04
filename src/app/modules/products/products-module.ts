@@ -6,6 +6,14 @@ import { ListProductsComponent } from './pages/list-products/list-products.compo
 import { ProductsRoutingModule } from './products-routing-module';
 import { ProductsComponent } from './products.component';
 
+/**
+ * Módulo de funcionalidad encargado de visualizar productos.
+ *
+ * @remarks
+ * Agrupa la página {@link ListProductsComponent}, la tabla
+ * {@link TableProductsComponent} y las rutas del módulo `products`. Los datos
+ * provienen de la fuente de configuración `PRODUCTS` ubicada en `core/config`.
+ */
 @NgModule({
   declarations: [
     ListProductsComponent,

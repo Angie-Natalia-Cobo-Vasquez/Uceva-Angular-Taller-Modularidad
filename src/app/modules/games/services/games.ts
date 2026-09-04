@@ -14,7 +14,15 @@ import { Game } from '../interfaces/game.interface';
   providedIn: 'root',
 })
 export class Games {
+  /** Instancia de `HttpClient` para realizar las peticiones HTTP. */
   private http = inject(HttpClient);
+
+  /**
+   * URL del endpoint público de FreeToGame que entrega el listado de juegos.
+   *
+   * @remarks
+   * Se consulta mediante una petición `GET` con `HttpClient`.
+   */
   private readonly apiUrl = 'https://www.freetogame.com/api/games';
 
   /**

@@ -28,7 +28,7 @@ npm start
 ```
 
 La aplicación queda disponible en `http://localhost:4200/`. La ruta inicial
-redirige a `/users`. También están disponibles `/products` y `/games`.
+redirige a `/home`. También están disponibles `/users`, `/products` y `/games`.
 
 Para crear una compilación de producción:
 
@@ -42,6 +42,7 @@ npm run build
 src/app/
 ├── core/                 Configuración e interfaces transversales
 ├── modules/
+│   ├── home/              Página de inicio y acceso a los módulos
 │   ├── users/             Usuarios, tabla, página y servicio
 │   ├── products/          Productos, tabla, página y servicio
 │   ├── games/             Juegos, tabla, página y servicio HTTP
@@ -53,7 +54,8 @@ src/app/
 Los módulos de `users` y `products` obtienen datos de archivos de configuración
 en `core/config`. El módulo `games` consulta en tiempo real la API pública
 [FreeToGame](https://www.freetogame.com/api/games) mediante `HttpClient` y
-representa su respuesta con `Game`.
+representa su respuesta con `Game`; la URL de la API también está centralizada
+en `core/config/games.config.ts`.
 
 ## Pruebas
 

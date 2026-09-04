@@ -1,0 +1,42 @@
+<section class="container my-4">
+  <h1 class="text-center mb-2">Taller de Modularidad</h1>
+  <p class="text-center lead text-muted">
+    Arquitectura de software con Angular: módulos, servicios, interfaces y consumo de APIs.
+  </p>
+
+  <div class="row row-cols-1 row-cols-md-3 g-4">
+    <div class="col">
+      <a class="card h-100 text-decoration-none text-dark shadow-sm" routerLink="/users">
+        <div class="card-body">
+          <h5 class="card-title">
+            <app-icon icon="person-fill"></app-icon>
+            Usuarios
+          </h5>
+          <p class="card-text">Listado de usuarios con su ingeniería, servido desde un archivo de configuración del Core.</p>
+        </div>
+      </a>
+    </div>
+    <div class="col">
+      <a class="card h-100 text-decoration-none text-dark shadow-sm" routerLink="/products">
+        <div class="card-body">
+          <h5 class="card-title">
+            <app-icon icon="cart-fill"></app-icon>
+            Productos
+          </h5>
+          <p class="card-text">Catálogo de productos con categoría y precio, servido desde un archivo de configuración del Core.</p>
+        </div>
+      </a>
+    </div>
+    <div class="col">
+      <a class="card h-100 text-decoration-none text-dark shadow-sm" routerLink="/games">
+        <div class="card-body">
+          <h5 class="card-title">
+            <app-icon icon="joystick"></app-icon>
+            Juegos
+          </h5>
+          <p class="card-text">Videojuegos gratuitos consumidos en tiempo real desde la API pública FreeToGame.</p>
+        </div>
+      </a>
+    </div>
+  </div>
+</section>

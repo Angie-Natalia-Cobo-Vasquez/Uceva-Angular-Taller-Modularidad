@@ -1,4 +1,4 @@
-import { Component, inject } from '@angular/core';
+import { Component, inject, OnInit } from '@angular/core';
 import { Product } from '../../interfaces/products.interface';
 import { ProductsService } from '../../services/products.service';
 
@@ -23,7 +23,7 @@ import { ProductsService } from '../../services/products.service';
   template: `<app-table-products [products]="products" ></app-table-products>`,
   standalone: false,
 })
-export class ListProductsComponent {
+export class ListProductsComponent implements OnInit {
   /**
    * Listado de productos obtenidos desde el servicio.
    * @type {Product[]}

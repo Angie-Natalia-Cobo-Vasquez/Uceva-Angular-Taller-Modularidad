@@ -11,8 +11,8 @@
  * @example
  * ```ts
  * const item: NavbarItem = {
- *   label: 'Usuarios',
- *   url: '/users'
+ *   label: 'Cursos',
+ *   url: '/courses'
  * };
  * ```
  */

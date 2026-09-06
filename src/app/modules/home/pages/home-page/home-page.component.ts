@@ -5,8 +5,7 @@ import { Component } from '@angular/core';
  *
  * @remarks
  * Muestra un menú visual con tarjetas que redirigen a los módulos
- * funcionales del taller (usuarios, productos y juegos) mediante las
- * directivas de enrutamiento de Angular.
+ * funcionales del taller mediante las directivas de enrutamiento de Angular.
  *
  * @example
  * ```html

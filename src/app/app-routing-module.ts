@@ -6,8 +6,8 @@ import { RouterModule, Routes } from '@angular/router';
  *
  * @remarks
  * Configura las rutas principales de la aplicación. La ruta base redirige a
- * la página de inicio `/home`. Los módulos de funcionalidad (`home`, `users`,
- * `products` y `games`) se cargan de forma perezosa mediante `loadChildren`
+ * la página de inicio `/home`. Los módulos de funcionalidad (`home`, `games` y
+ * `courses`) se cargan de forma perezosa mediante `loadChildren`
  * (lazy-loading). Cualquier ruta desconocida redirige a `/home`.
  */
 const routes: Routes = [
@@ -21,16 +21,12 @@ const routes: Routes = [
     loadChildren: () => import('./modules/home/home-module').then(m => m.HomeModule)
   },
   {
-    path: 'users',
-    loadChildren: () => import('./modules/users/users-module').then(m => m.UsersModule)
-  },
-  {
-    path: 'products',
-    loadChildren: () => import('./modules/products/products-module').then(m => m.ProductsModule)
-  },
-  {
     path: 'games',
     loadChildren: () => import('./modules/games/games-module').then(m => m.GamesModule)
+  },
+  {
+    path: 'courses',
+    loadChildren: () => import('./modules/courses/courses-module').then(m => m.CoursesModule)
   },
   {
     path: '**',

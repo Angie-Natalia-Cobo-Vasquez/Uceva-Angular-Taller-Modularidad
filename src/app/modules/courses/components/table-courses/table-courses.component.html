@@ -1,0 +1,24 @@
+<table class="table table-striped border">
+  <thead>
+    <tr>
+      <th scope="col">Id</th>
+      <th scope="col">Curso</th>
+      <th scope="col">Grupo</th>
+      <th scope="col">Aula</th>
+      <th scope="col">Docente</th>
+      <th scope="col">Horario</th>
+    </tr>
+  </thead>
+  <tbody>
+    @for (course of courses; track course.id) {
+      <tr>
+        <th scope="row">{{ course.id }}</th>
+        <td>{{ course.name }}</td>
+        <td>{{ course.group }}</td>
+        <td>{{ course.classroom }}</td>
+        <td>{{ course.teacher }}</td>
+        <td>{{ course.schedule }}</td>
+      </tr>
+    }
+  </tbody>
+</table>

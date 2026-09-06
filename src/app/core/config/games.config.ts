@@ -3,8 +3,7 @@
  *
  * @remarks
  * Este constante centraliza, en la carpeta `core/config`, la fuente de datos
- * del módulo `games`. A diferencia de `users` y `products`, la información no
- * se define localmente sino que se consulta en tiempo real mediante una
+ * del módulo `games`; la información se consulta en tiempo real mediante una
  * petición `GET` con `HttpClient`.
  *
  * La API responde con un arreglo de objetos que cumplen la interfaz {@link Game}.

@@ -31,15 +31,14 @@ describe('HomePageComponent', () => {
 
   it('debería renderizar una tarjeta por cada módulo del taller', () => {
     const cards = fixture.debugElement.queryAll(By.css('.card'));
-    expect(cards.length).toBe(3);
+    expect(cards.length).toBe(2);
   });
 
-  it('debería tener enlaces a los módulos users, products y games', () => {
+  it('debería tener enlaces a todos los módulos del taller', () => {
     const links = fixture.debugElement.queryAll(By.css('a[routerLink]'));
     const urls = links.map(link => link.nativeElement.getAttribute('routerLink'));
 
-    expect(urls).toContain('/users');
-    expect(urls).toContain('/products');
     expect(urls).toContain('/games');
+    expect(urls).toContain('/courses');
   });
 });

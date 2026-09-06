@@ -10,8 +10,8 @@ import { HomePageComponent } from './pages/home-page/home-page.component';
  *
  * @remarks
  * Agrupa la página {@link HomePageComponent} y sus rutas. Es la pantalla
- * inicial de la aplicación y brinda acceso directo a los módulos `users`,
- * `products` y `games`.
+ * inicial de la aplicación y brinda acceso directo a los módulos `games` y
+ * `courses`.
  */
 @NgModule({
   declarations: [

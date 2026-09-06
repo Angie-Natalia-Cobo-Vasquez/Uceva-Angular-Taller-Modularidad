@@ -33,6 +33,10 @@ const routes: Routes = [
     loadChildren: () => import('./modules/games/games-module').then(m => m.GamesModule)
   },
   {
+    path: 'movies',
+    loadChildren: () => import('./modules/movies/movies-module').then(m => m.MoviesModule)
+  },
+  {
     path: '**',
     redirectTo: 'home'
   },

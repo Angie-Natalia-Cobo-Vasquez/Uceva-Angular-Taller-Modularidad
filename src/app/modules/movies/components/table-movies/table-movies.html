@@ -1,0 +1,22 @@
+<table class="table">
+  <thead>
+    <tr>
+      <th>Título</th>
+      <th>Director</th>
+      <th>Año</th>
+      <th>Duración (min)</th>
+      <th>Género</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let movie of movies">
+      <td>{{ movie.title }}</td>
+      <td>{{ movie.director }}</td>
+      <td>{{ movie.year }}</td>
+      <td>{{ movie.duration }}</td>
+      <td>
+        <app-badge [text]="movie.genre" [type]="getGenreBadge(movie.genre)"></app-badge>
+      </td>
+    </tr>
+  </tbody>
+</table>

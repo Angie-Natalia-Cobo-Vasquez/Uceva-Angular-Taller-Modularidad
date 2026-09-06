@@ -28,7 +28,7 @@ npm start
 ```
 
 La aplicación queda disponible en `http://localhost:4200/`. La ruta inicial
-redirige a `/home`. También están disponibles `/games` y `/courses`.
+redirige a `/home`. También están disponibles `/games`, `/courses` y `/movies`.
 
 Para crear una compilación de producción:
 
@@ -45,14 +45,15 @@ src/app/
 │   ├── home/              Página de inicio y acceso a los módulos
 │   ├── games/             Juegos, tabla, página y servicio HTTP
 │   ├── courses/           Curso, tabla, página y servicio desde Core
+│   ├── movies/            Películas, tabla, página y servicio (Core)
 │   └── shared/            Componentes reutilizables
 ├── app-routing-module.ts  Rutas lazy-loaded de los módulos
 └── app-module.ts          Módulo raíz
 ```
 
-El módulo `courses` es un módulo independiente: obtiene los datos académicos de
-un archivo de configuración en `core/config` mediante su servicio e interfaz
-tipada. El módulo `games` consulta en tiempo real la API pública
+Los módulos `courses` y `movies` son módulos independientes: obtienen datos de
+archivos de configuración en `core/config` mediante sus servicios e interfaces
+tipadas. El módulo `games` consulta en tiempo real la API pública
 [FreeToGame](https://www.freetogame.com/api/games) mediante `HttpClient` y
 representa su respuesta con `Game`; la URL de la API también está centralizada
 en `core/config/games.config.ts`.

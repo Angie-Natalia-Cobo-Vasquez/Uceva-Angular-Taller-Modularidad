@@ -31,7 +31,7 @@ describe('HomePageComponent', () => {
 
   it('debería renderizar una tarjeta por cada módulo del taller', () => {
     const cards = fixture.debugElement.queryAll(By.css('.card'));
-    expect(cards.length).toBe(2);
+    expect(cards.length).toBe(3);
   });
 
   it('debería tener enlaces a todos los módulos del taller', () => {
@@ -40,5 +40,6 @@ describe('HomePageComponent', () => {
 
     expect(urls).toContain('/games');
     expect(urls).toContain('/courses');
+    expect(urls).toContain('/movies');
   });
 });

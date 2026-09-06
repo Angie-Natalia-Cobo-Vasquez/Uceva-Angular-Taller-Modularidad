@@ -58,6 +58,19 @@ tipadas. El módulo `games` consulta en tiempo real la API pública
 representa su respuesta con `Game`; la URL de la API también está centralizada
 en `core/config/games.config.ts`.
 
+### Fuentes de datos
+
+| Módulo | Fuente | Acceso |
+| --- | --- | --- |
+| `courses` | `src/app/core/config/courses.config.ts` | `CoursesService` |
+| `movies` | `src/app/core/config/movies.config.ts` | `Movies` |
+| `games` | [FreeToGame API](https://www.freetogame.com/api/games) | `Games` con `HttpClient` |
+
+El módulo `courses` contiene la oferta académica del taller. El módulo `movies`
+usa datos locales tipados para demostrar la separación entre configuración,
+servicio y presentación. Solo `games` realiza una petición HTTP real a una API
+externa.
+
 ## Pruebas
 
 El proyecto utiliza Jest y `jest-preset-angular`:
@@ -67,6 +80,9 @@ npm test                 # Ejecuta las pruebas una vez
 npm run test:watch       # Modo observación
 npm run test:coverage    # Reporte de cobertura
 ```
+
+La suite cubre servicios, páginas, tablas, navegación y consumo HTTP. Para la
+entrega se debe conservar una cobertura superior al 90%.
 
 ## Documentación con Compodoc
 
@@ -81,6 +97,25 @@ npm run compodoc
 El resultado se genera en la carpeta `documentation/`. Abre
 `documentation/index.html` en el navegador para consultar módulos, componentes,
 servicios, interfaces y gráficos de dependencias.
+
+## Checklist de entrega
+
+- Módulos funcionales: `courses`, `movies` y `games`.
+- Rutas lazy-loaded y opciones visibles en el Navbar.
+- Interfaces tipadas para cursos, películas y juegos.
+- Servicios separados de las páginas y tablas.
+- Consumo de API externa con `HttpClient` en `games`.
+- Pruebas unitarias con Jest y cobertura superior al 90%.
+- Documentación técnica generada con Compodoc.
+- Commits con formato Conventional Commits.
+
+Validación completa antes de entregar:
+
+```bash
+npm test -- --runInBand --coverage
+npm run compodoc
+npm run build
+```
 
 ## Modelos con Quicktype.io
 
